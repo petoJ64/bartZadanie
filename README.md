@@ -24,6 +24,7 @@ npm run dev
 ```
 
 3.) Otvorenie prehliadača
-V terminály následne vypíše adresu, na ktorej je možné prezerať vytvorenú aplikáciu.
+
+- V terminály následne vypíše adresu, na ktorej je možné prezerať vytvorenú aplikáciu.
 
 ![image](https://github.com/petoJ64/bartZadanie/blob/main/terminal.png)
