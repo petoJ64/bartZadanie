@@ -36,7 +36,7 @@ function AlbumList({newAlbums, onDeleteALbum = () => {}}){
                                     <img  src={trash} className=' trash pointer ' alt="" onClick={()=>onDeleteALbum(category.name)}/>
                                     
                                     <Link className="img-fit center-loader" to={`/category/${category.name}`} >
-                                        <ImageComponent src={`${API_URL}images/0x0/${category.image.fullpath}`} />
+                                        <ImageComponent src={`${API_URL}images/232x240/${category.image.fullpath}`} />
                                     </Link>
                                 </>
                                 

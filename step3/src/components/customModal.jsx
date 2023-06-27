@@ -8,6 +8,7 @@ import FormData from 'form-data';
 import unorm from 'unorm';
 import { UploadLoading } from './UploadLoading';
 import { DisplayImage } from './DisplayImage';
+import Resizer from 'react-image-file-resizer';
 
 
 function CustomModal({show = false, onHide = () => {}, onAlbumAdded = () => {},onPhotoAdded = () => {}, type='default',link = '' } ) {
@@ -18,6 +19,8 @@ function CustomModal({show = false, onHide = () => {}, onAlbumAdded = () => {},o
   const [data,setData] = useState('');
   const [loading, setLoading] = useState(false);
   const [errorMessage,setErrorMessage] = useState('');
+
+  const [selectedFile2, setSelectedFile2] = useState(null);
 
   useEffect(()=>{
     setLoading(false);
@@ -76,13 +79,44 @@ function CustomModal({show = false, onHide = () => {}, onAlbumAdded = () => {},o
 
   // handle of the selected file via the button
   const handleFileSelect = (event) => {
+    const files = Array.from(event.target.files);
     setData(event.target.files);
     let uploadedImages = [];
     for( let i = 0; i < event.target.files.length; i++) {
       uploadedImages.push(event.target.files[i].name)
     }
-    setSelectedFiles(uploadedImages)
+    //console.log("OBRAZKY: ", event.target.files);
+    
+    const resizedFiles = resizeImages(files);
+    console.log("TU SU VSETKY: ", resizedFiles );
+    console.log("TU SU POVODNE: ", uploadedImages);
+    setSelectedFiles(uploadedImages);
+    setData(resizedFiles);
+    console.log("FILES: ", event.target.files);
   }
+
+  const resizeImages = (files) => {
+    let uploadedImages = [];
+    files.forEach((file) => {
+      Resizer.imageFileResizer(
+          file,
+          660, // Maximum height (in pixels)
+          660, // Automatically calculate the width based on the aspect ratio
+          'JPEG',
+          100,
+          0,
+          (resizedImage) => {
+            // resizedImage contains the resized image file
+            
+            uploadedImages.push(resizedImage)
+            // You can now upload the resized image to the server
+            // using an AJAX request or any other method
+          },
+          'file' // Output type (base64 or file)
+        );
+    });
+    return uploadedImages;
+  };
 
   return (
     <>

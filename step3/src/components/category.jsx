@@ -17,6 +17,7 @@ export const Category = () =>{
     const {mutate: addPhotos} = useAddPhotos(categoryName,setModalShow);
 
     const handleModal = (type,link) => {
+        
         setModalType(type);
         setModalShow(true);
         setImageLink(link);
@@ -53,7 +54,7 @@ export const Category = () =>{
                     {data && data.data.images.map((a) => 
                         <div key={a.path} style={{width:'232px', height:'240px'}} onClick={() => handleModal('showImage',`${API_URL}images/0x0/${a.fullpath}`)}>
                             <div className="img-container center-loader rounded">
-                                <ImageComponent src={`http://api.programator.sk/images/0x0/${a.fullpath}`}/>
+                                <ImageComponent src={`${API_URL}images/232x240/${a.fullpath}`}/>
                             </div>
                         </div>
                     )}

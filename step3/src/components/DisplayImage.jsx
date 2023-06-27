@@ -6,7 +6,7 @@ import { useEffect, useState,useCallback } from 'react';
 
 export const DisplayImage = ({show = false, onHide = () => {},albumsData = [], link = '' }) =>{
     const [activeChild, setActiveChild] = useState(0);
-
+    console.log("TU SOM: ", link);
     useEffect(()=>{
         setActiveChild(currentImageIndex())
         currentImageIndex();
