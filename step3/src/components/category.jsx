@@ -36,6 +36,7 @@ export const Category = () =>{
 
    // Add photos to album
     const handleAddPhotos = async(photos) => {
+        console.log("TU SUUUU: ", photos);
       addPhotos(photos);
     }
 

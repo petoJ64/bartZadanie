@@ -64,6 +64,7 @@ export const useAddAlbum = () => {
 
 // Add photos to album
 const addPhotos = async (albumName, photos) => {
+  console.log("TU SU FOTKY: ", photos);
   try {
     await axios.post(`${API_URL}gallery/${albumName}`, photos, {
       headers: { "Content-Type": "multipart/form-data" },

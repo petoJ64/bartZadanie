@@ -3,16 +3,20 @@ import Modal from 'react-bootstrap/Modal';
 import Xiconw from '../images/Xiconw.png';
 import arrow from '../images/arrow.png';
 import { useEffect, useState,useCallback } from 'react';
+import ImageComponent from './ImageComponent';
 
 export const DisplayImage = ({show = false, onHide = () => {},albumsData = [], link = '' }) =>{
     const [activeChild, setActiveChild] = useState(0);
-    console.log("TU SOM: ", link);
+    const [error, setError] = useState(false);
+
+
     useEffect(()=>{
         setActiveChild(currentImageIndex())
         currentImageIndex();
     },[show])
 
     useEffect(() => {
+      console.log("TUUUU: ", link);
     document.addEventListener("keydown", changeChild);
     return function cleanup() {
         document.removeEventListener("keydown", changeChild);
@@ -69,9 +73,11 @@ export const DisplayImage = ({show = false, onHide = () => {},albumsData = [], l
         style={{display:'flex',justifyContent:'center'}}
       >
         <Modal.Body className='p-0'>
-          
+        
+        
           <div className="modal-content">
-            <img className="img-fit" style={{ objectFit: 'contain', maxHeight: "660px", width: 'auto',height:'auto' }} src={albumsData[activeChild]} alt=" " />
+            {/* <img className="img-fit" style={{ objectFit: 'contain', maxHeight: "660px", width: 'auto',height:'auto' }} src={albumsData[activeChild]} alt=" " onError={console.log("ERROR")}/> */}
+            <ImageComponent src={albumsData[activeChild]}/>
           </div>
           <div className='top-right'>
             <img src={Xiconw} className='pointer arrow' alt="x" onClick={onHide} />

@@ -20,10 +20,11 @@ function CustomModal({show = false, onHide = () => {}, onAlbumAdded = () => {},o
   const [loading, setLoading] = useState(false);
   const [errorMessage,setErrorMessage] = useState('');
 
-  const [selectedFile2, setSelectedFile2] = useState(null);
+  const [imagesReady, setImagesReady] = useState(true);
 
   useEffect(()=>{
     setLoading(false);
+    setData('');
     setErrorMessage("");
     setSelectedFiles([]);
   },[show])
@@ -63,60 +64,69 @@ function CustomModal({show = false, onHide = () => {}, onAlbumAdded = () => {},o
 
   // confirmation of the selected files for uploading to the API
   const handleSubmit = async(event) => {
-      event.preventDefault()
-      const formData = new FormData();
-      for( let i = 0; i < data.length; i++) {
-        formData.append(`selectedFile[${i}]`, data[i]);
-      }
+    event.preventDefault()
+    if(data.length>0){
+    const formData = new FormData();
+    for( let i = 0; i < data.length; i++) {
+      formData.append(`selectedFile[${i}]`, data[i]);
+    }
     try { 
       setLoading(true);
       onPhotoAdded(formData);
-      } 
-      catch(error) {
-          console.log(error);
-      }
+    } 
+    catch(error) {
+      console.log(error);
+    }}
   }
 
   // handle of the selected file via the button
-  const handleFileSelect = (event) => {
+  const handleFileSelect = async(event) => {
+    setImagesReady(false);
     const files = Array.from(event.target.files);
-    setData(event.target.files);
+    //setData(event.target.files);
     let uploadedImages = [];
     for( let i = 0; i < event.target.files.length; i++) {
       uploadedImages.push(event.target.files[i].name)
     }
     //console.log("OBRAZKY: ", event.target.files);
     
-    const resizedFiles = resizeImages(files);
+    const resizedFiles = await resizeImages(files);
     console.log("TU SU VSETKY: ", resizedFiles );
     console.log("TU SU POVODNE: ", uploadedImages);
-    setSelectedFiles(uploadedImages);
     setData(resizedFiles);
+    setSelectedFiles(uploadedImages);
+    
     console.log("FILES: ", event.target.files);
   }
 
-  const resizeImages = (files) => {
+  const resizeImages = async (files) => {
     let uploadedImages = [];
-    files.forEach((file) => {
-      Resizer.imageFileResizer(
+  
+    await Promise.all(files.map((file) => {
+      console.log("!");
+      return new Promise((resolve) => {
+        Resizer.imageFileResizer(
           file,
-          660, // Maximum height (in pixels)
-          660, // Automatically calculate the width based on the aspect ratio
+          800, 
+          800, 
           'JPEG',
           100,
           0,
           (resizedImage) => {
-            // resizedImage contains the resized image file
-            
-            uploadedImages.push(resizedImage)
-            // You can now upload the resized image to the server
-            // using an AJAX request or any other method
+            console.log(":");
+            uploadedImages.push(resizedImage);
+            resolve();
           },
-          'file' // Output type (base64 or file)
+          'file' 
         );
-    });
+      });
+    }));
+  
+    console.log("CHECK: ", uploadedImages);
+    setImagesReady(true);
     return uploadedImages;
   };
+  
 
   return (
     <>
@@ -181,7 +191,8 @@ function CustomModal({show = false, onHide = () => {}, onAlbumAdded = () => {},o
                     }
                 </div>
                 <form onSubmit={handleSubmit}>
-                  <button type='submit' className='backg mt-3 p-3' > Pridať </button>
+                  {imagesReady ? <button type='submit' className='backg mt-3 p-3' disabled={!imagesReady}> Pridať </button> : <button  className='backg mt-3 p-3' style={{cursor:'wait'}}><span className='blink'>Spracuju sa obrazky</span> </button> }
+                  {/* <button type='submit' className='backg mt-3 p-3' disabled={!imagesReady}> Pridať </button> */}
                   <input id="imgs" type="file" hidden multiple accept="image/jpeg" onChange={handleFileSelect} />
                 </form>
           </Modal.Body>

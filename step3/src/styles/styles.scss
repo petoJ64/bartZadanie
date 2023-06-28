@@ -90,10 +90,6 @@ input {
     justify-content: center !important;
   }
 
-  // .texts{
-  //   @include center-items;
-  // }
-
 
 }
 
@@ -125,14 +121,7 @@ input {
 
 .plus {
     width:16%;
-    //border: 2px solid black;
-    //border-radius: 25%;
-    //padding: 4px;
-    
-    
 }
-
-
 
 .center-plus {
     @include center-items;
