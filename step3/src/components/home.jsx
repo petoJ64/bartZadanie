@@ -1,13 +1,14 @@
 import '../styles/styles.scss';
-import plus from '../images/plus.png'
 import { useState } from 'react';
 import  CustomModal  from './CustomModal';
 import { useEffect } from 'react';
-import Form from 'react-bootstrap/Form';
 import { useQuery } from "@tanstack/react-query";
 import { getAlbums, useDeleteAlbum, useAddAlbum  } from "../api/api";
 import  AlbumList  from './AlbumList';
 import { GalleryLoader } from './GalleryLoader';
+import { CustomForm } from './CustomForm';
+import { AddCard } from './AddCard';
+import { PageHeader } from './PageHeader';
 
 export const Home = () =>{
 
@@ -44,53 +45,28 @@ export const Home = () =>{
     return(<>
 
         <div className="container" >
-        
-            <div className="intro" >
+            <PageHeader><CustomForm data={data} setNewAlbums={setNewAlbums} /></PageHeader>
+            <p className=" mb-4 texts" >Kategórie</p>
+            {/* <div className="intro" >
                 <h2 style={{ marginRight: 'auto' }}>Fotogaléria</h2>
-                <div >
-                <h5  style={{  opacity:'0.6'}}>Vyhľadávanie</h5>
-                <Form>
-                    <Form.Group >                  
-                        <Form.Control 
-                            type="text" 
-                            id="categoryInput" 
-                            placeholder="Názov albumu" 
-                            onChange={(event) => {
-                                const searchString = event.target.value.toLowerCase();
-                                const filterAlbums = data.galleries.filter((album) => album.name.toLowerCase().includes(searchString));
-                                setNewAlbums(filterAlbums);
-
-                                }}
-                        />
-                    </Form.Group>
-                    
-                </Form>
-
-                </div>
+                <CustomForm data={data} setNewAlbums={setNewAlbums} />
             </div>
+            <p className=" mb-4 texts" >Kategórie</p> */}
         
-        <p className=" mb-4 texts" >Kategórie</p>
-        <div className="row " style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, 232px)', gap: '30px', justifyContent: 'flex-start',margin:'0px' }}>      
+            <div className="row " style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, 232px)', gap: '30px', justifyContent: 'flex-start',margin:'0px' }}>      
             
-            <AlbumList newAlbums={newAlbums} onDeleteALbum={handleDeleteAlbum}/>
+                <AlbumList newAlbums={newAlbums} onDeleteALbum={handleDeleteAlbum}/>
 
-            <div  style={{marginBottom:'30px',width:'232px', height:'240px'}}>
-                <div className="h-100 ">
-                    <div className="img-container text-center center-plus " onClick={() => setModalShow(true)}>
-                        <img className="plus" src={plus} alt="gallery"/>
-                        <p style={{marginTop:'1rem'}}> Pridať kategóriu </p>
-                    </div>                    
-                </div>
+                <AddCard content="Pridať kategóriu" handleModal = {()=>setModalShow(true)}/>
+                
+                <CustomModal 
+                    show={modalShow}
+                    onHide={() => setModalShow(false)}
+                    onAlbumAdded={handleAddAlbum}
+                    type= "addAlbum"
+                />
             </div>
-            
-            <CustomModal 
-                show={modalShow}
-                onHide={() => setModalShow(false)}
-                onAlbumAdded={handleAddAlbum}
-                type= "addAlbum"
-            />
-        </div>
-    </div> 
+        </div> 
     </>)
 
 }

@@ -1,14 +1,12 @@
 /* eslint-disable react/prop-types */
 import Modal from 'react-bootstrap/Modal';
-import Xiconw from '../images/Xiconw.png';
-import arrow from '../images/arrow.png';
+import Xiconw from '../images/Xiconw.svg';
+import arrow from '../images/arrow.svg';
 import { useEffect, useState,useCallback } from 'react';
 import ImageComponent from './ImageComponent';
 
 export const DisplayImage = ({show = false, onHide = () => {},albumsData = [], link = '' }) =>{
     const [activeChild, setActiveChild] = useState(0);
-    const [error, setError] = useState(false);
-
 
     useEffect(()=>{
         setActiveChild(currentImageIndex())

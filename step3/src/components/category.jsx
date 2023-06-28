@@ -1,5 +1,4 @@
-import arrow from '../images/arrow.png';
-import plus from '../images/plus.png';
+import arrow from '../images/arrow.svg';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useState} from 'react';
@@ -8,6 +7,8 @@ import { getAlbum, useAddPhotos} from "../api/api";
 import { useQuery} from "@tanstack/react-query";
 import ImageComponent from './ImageComponent';
 import { API_URL } from '../constants/constants';
+import { AddCard } from './AddCard';
+import { PageHeader } from './PageHeader';
 
 export const Category = () =>{
     const { categoryName } = useParams();
@@ -17,7 +18,6 @@ export const Category = () =>{
     const {mutate: addPhotos} = useAddPhotos(categoryName,setModalShow);
 
     const handleModal = (type,link) => {
-        
         setModalType(type);
         setModalShow(true);
         setImageLink(link);
@@ -36,14 +36,15 @@ export const Category = () =>{
 
    // Add photos to album
     const handleAddPhotos = async(photos) => {
-        console.log("TU SUUUU: ", photos);
-      addPhotos(photos);
+        addPhotos(photos);
     }
 
     return (
         <>
             <div className="container">
-                <h2>Fotogaléria</h2>
+
+                <PageHeader/>
+                
                 <p className="mb-4">
                     <Link to="/">
                         <img src={arrow} className="arrow" alt="gallery"/> 
@@ -59,15 +60,9 @@ export const Category = () =>{
                             </div>
                         </div>
                     )}
+                    
+                    <AddCard content="Pridať fotky" handleModal={handleModal} modalContent = {('addImages', '')}/>
 
-                    <div style={{marginBottom:'30px',width:'232px', height:'240px'}}>
-                        <div className="h-100 ">
-                            <div className="img-container text-center center-plus " onClick={() => handleModal('addImages', '')}>
-                                <img className="plus" src={plus} alt="gallery"/>
-                                <p className="mt-3"> Pridať fotky </p>
-                            </div>                    
-                        </div>
-                    </div>
                 </div>
             </div> 
 

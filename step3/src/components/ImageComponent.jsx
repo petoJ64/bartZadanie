@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import {useState, useEffect} from "react";
-import notVisable from "../images/notVisable.png";
+import notVisable from "../images/notVisable.svg";
 
 export default function ImageComponent({src}) {
     const [imageLoaded, setImageLoaded] = useState(false);
@@ -34,6 +34,7 @@ export default function ImageComponent({src}) {
           alt=""
           onError={(e) => {
             setError(true);
+            console.log(e);
           }}
         />
       )}
