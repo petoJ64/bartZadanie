@@ -77,12 +77,6 @@ export const DisplayImage = ({show = false, onHide = () => {},albumsData = [], l
             <img src={Xiconw} className='pointer arrow' alt="x" onClick={onHide} />
           </div>
           <ImageArrow activeChild={activeChild} changeBlogPicBackwards={changeBlogPicBackwards} changeBlogPicForwards={changeBlogPicForwards} length={(albumsData).length}/>
-          {/* <div className={`arrow-left ${activeChild !== 0 ? 'pointer' : 'disabled'}`} onClick={changeBlogPicBackwards}>
-            <img src={arrow} className='next-arrow img-fit' alt="left arrow" />
-          </div>
-          <div className={`arrow-right ${activeChild !== (albumsData).length - 1 ? 'pointer' : 'disabled'}`} onClick={changeBlogPicForwards}>
-            <img src={arrow} className='next-arrow img-fit' alt="right arrow" />
-          </div> */}
         </Modal.Body>
       </Modal>
         </>

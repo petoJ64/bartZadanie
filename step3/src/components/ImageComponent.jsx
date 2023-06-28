@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import {useState, useEffect} from "react";
-import notVisable from "../images/notVisable.svg";
+import notVisible from "../images/notVisible.svg";
 
 export default function ImageComponent({src}) {
     const [imageLoaded, setImageLoaded] = useState(false);
@@ -38,7 +38,7 @@ export default function ImageComponent({src}) {
           }}
         />
       )}
-      {error && <div style={{background:'lightgrey',display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',textAlign:'center',minHeight:'240px'}}><img src={notVisable} className="img-fit" style={{maxWidth:'60px'}}/><p style={{width:'80%'}}>Bohuzial obrazok nie je mozne zobrazit.</p></div>}
+      {error && <div style={{background:'lightgrey',display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',textAlign:'center',minHeight:'240px'}}><img src={notVisible} className="img-fit" style={{maxWidth:'60px'}}/><p style={{width:'80%'}}>Bohuzial obrazok nie je mozne zobrazit.</p></div>}
         </>
     )
 }
