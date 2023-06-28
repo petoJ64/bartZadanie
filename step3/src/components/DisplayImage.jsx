@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import Modal from 'react-bootstrap/Modal';
 import Xiconw from '../images/Xiconw.svg';
-import arrow from '../images/arrow.svg';
 import { useEffect, useState,useCallback } from 'react';
 import ImageComponent from './ImageComponent';
+import { ImageArrow } from './ImageArrow';
 
 export const DisplayImage = ({show = false, onHide = () => {},albumsData = [], link = '' }) =>{
     const [activeChild, setActiveChild] = useState(0);
@@ -14,7 +14,6 @@ export const DisplayImage = ({show = false, onHide = () => {},albumsData = [], l
     },[show])
 
     useEffect(() => {
-      console.log("TUUUU: ", link);
     document.addEventListener("keydown", changeChild);
     return function cleanup() {
         document.removeEventListener("keydown", changeChild);
@@ -71,21 +70,19 @@ export const DisplayImage = ({show = false, onHide = () => {},albumsData = [], l
         style={{display:'flex',justifyContent:'center'}}
       >
         <Modal.Body className='p-0'>
-        
-        
           <div className="modal-content">
-            {/* <img className="img-fit" style={{ objectFit: 'contain', maxHeight: "660px", width: 'auto',height:'auto' }} src={albumsData[activeChild]} alt=" " onError={console.log("ERROR")}/> */}
             <ImageComponent src={albumsData[activeChild]}/>
           </div>
           <div className='top-right'>
             <img src={Xiconw} className='pointer arrow' alt="x" onClick={onHide} />
           </div>
-          <div className={`arrow-left ${activeChild !== 0 ? 'pointer' : 'disabled'}`} onClick={changeBlogPicBackwards}>
+          <ImageArrow activeChild={activeChild} changeBlogPicBackwards={changeBlogPicBackwards} changeBlogPicForwards={changeBlogPicForwards} length={(albumsData).length}/>
+          {/* <div className={`arrow-left ${activeChild !== 0 ? 'pointer' : 'disabled'}`} onClick={changeBlogPicBackwards}>
             <img src={arrow} className='next-arrow img-fit' alt="left arrow" />
           </div>
           <div className={`arrow-right ${activeChild !== (albumsData).length - 1 ? 'pointer' : 'disabled'}`} onClick={changeBlogPicForwards}>
-            <img src={arrow} className='next-arrow' alt="right arrow" />
-          </div>
+            <img src={arrow} className='next-arrow img-fit' alt="right arrow" />
+          </div> */}
         </Modal.Body>
       </Modal>
         </>

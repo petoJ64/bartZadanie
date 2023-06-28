@@ -4,8 +4,8 @@ import Img from '../images/pic.svg'
 import { useState, useEffect } from 'react';
 import { UploadLoading } from './UploadLoading';
 import Xicon from '../images/xicon.svg';
-import Resizer from 'react-image-file-resizer';
 import { imageUtilities } from './ImageUtilities';
+import { SelectedFiles } from './SelectedFiles';
 
 export const AddImages = ({show = false, onHide = () => {},onPhotoAdded = () => {}}) => {
 
@@ -67,30 +67,6 @@ export const AddImages = ({show = false, onHide = () => {},onPhotoAdded = () => 
         setSelectedFiles(uploadedImages);
     }
 
-  // const resizeImages = async (files) => {
-  //   let uploadedImages = [];
-  
-  //   await Promise.all(files.map((file) => {
-  //     return new Promise((resolve) => {
-  //       Resizer.imageFileResizer(
-  //         file,
-  //         800, 
-  //         800, 
-  //         'JPEG',
-  //         100,
-  //         0,
-  //         (resizedImage) => {
-  //           uploadedImages.push(resizedImage);
-  //           resolve();
-  //         },
-  //         'file' 
-  //       );
-  //     });
-  //   }));
-  //   setImagesReady(true);
-  //   return uploadedImages;
-  // };
-
     return(
         <Modal
           show = {show}
@@ -111,10 +87,11 @@ export const AddImages = ({show = false, onHide = () => {},onPhotoAdded = () => 
                       </>
                     :
                       <>
-                        <p><b>Sem presuňte fotky</b></p>
+                      <SelectedFiles selectedFiles={selectedFiles} />
+                        {/* <p><b>Sem presuňte fotky</b></p>
                         <p style={{opacity:'0.6'}}>alebo</p>
                         <label htmlFor="imgs" className='imgBtn mt-1 mb-4  p-2 pl-3 pr-3'>Vyberte súbory</label> 
-                        <div style={{color:'green'}}>{selectedFiles.map(img => <p key={img}>{img}</p>)}</div>
+                        <div style={{color:'green'}}>{selectedFiles.map(img => <p key={img}>{img}</p>)}</div> */}
                       </>
                     }
                 </div>
