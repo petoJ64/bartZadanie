@@ -1,3 +1,6 @@
+import '../styles/uploadloading.css';
+
+
 // animation when uploading images
 export const UploadLoading = () => {
 

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import ImageComponent from "./ImageComponent"
 import album from '../images/album.svg';
 
+
 export const AlbumCard = ({name,fullpath}) => {
     let src = "";
     

@@ -10,6 +10,7 @@ import { API_URL } from '../constants/constants';
 import { AddCard } from './AddCard';
 import { PageHeader } from './PageHeader';
 
+
 export const Category = () =>{
     const { categoryName } = useParams();
     const [modalShow, setModalShow] = useState(false);
@@ -52,9 +53,9 @@ export const Category = () =>{
                     </Link>
                 </p>
             
-                <div className="row" style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, 232px)', gap: '30px', justifyContent: 'flex-start',margin:'0px' }}>    
+                <div className="row row-class" >    
                     {data && data.data.images.map((a) => 
-                        <div key={a.path} style={{width:'232px', height:'240px'}} onClick={() => handleModal('showImage',`${API_URL}images/0x0/${a.fullpath}`)}>
+                        <div key={a.path} className='card-size'  onClick={() => handleModal('showImage',`${API_URL}images/0x0/${a.fullpath}`)}>
                             <div className="img-container center-loader rounded">
                                 <ImageComponent src={`${API_URL}images/232x240/${a.fullpath}`}/>
                             </div>

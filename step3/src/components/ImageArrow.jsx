@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import arrow from '../images/arrow.svg';
 
+
 export const ImageArrow = ({activeChild, changeBlogPicBackwards = () =>{}, changeBlogPicForwards = () => {}, length}) => {
 
     return(

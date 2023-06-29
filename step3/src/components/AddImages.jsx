@@ -6,6 +6,8 @@ import { UploadLoading } from './UploadLoading';
 import Xicon from '../images/xicon.svg';
 import { imageUtilities } from './ImageUtilities';
 import { SelectedFiles } from './SelectedFiles';
+import '../styles/addimages.css'
+
 
 export const AddImages = ({show = false, onHide = () => {},onPhotoAdded = () => {}}) => {
 
@@ -82,21 +84,19 @@ export const AddImages = ({show = false, onHide = () => {},onPhotoAdded = () => 
                 <div className='addImages' onDragOver={handleDragOver} onDrop={handleFileSelect} >
                   <img className='mt-5 mb-3' src={Img} alt=" " />
                     {loading ? 
-                      <>
-                        <UploadLoading/>
-                      </>
+                      <UploadLoading/>
                     :
-                      <>
                       <SelectedFiles selectedFiles={selectedFiles} />
-                        {/* <p><b>Sem presuňte fotky</b></p>
-                        <p style={{opacity:'0.6'}}>alebo</p>
-                        <label htmlFor="imgs" className='imgBtn mt-1 mb-4  p-2 pl-3 pr-3'>Vyberte súbory</label> 
-                        <div style={{color:'green'}}>{selectedFiles.map(img => <p key={img}>{img}</p>)}</div> */}
-                      </>
                     }
                 </div>
                 <form onSubmit={handleSubmit}>
-                  {imagesReady ? <button type='submit' className='backg mt-3 p-3' disabled={!imagesReady}> Pridať </button> : <button  className='backg mt-3 p-3' style={{cursor:'wait'}}><span className='blink'>Spracuju sa obrazky</span> </button> }
+                  {imagesReady ? 
+                    <button type='submit' className='backg mt-3 p-3' disabled={!imagesReady}> Pridať </button> 
+                  : 
+                    <button  className='backg mt-3 p-3 wait-cursor'>
+                      <span className='blink'>Spracuju sa obrazky</span> 
+                    </button> 
+                  }
                   <input id="imgs" type="file" hidden multiple accept="image/jpeg" onChange={handleFileSelect} />
                 </form>
           </Modal.Body>

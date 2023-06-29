@@ -10,6 +10,7 @@ import { CustomForm } from './CustomForm';
 import { AddCard } from './AddCard';
 import { PageHeader } from './PageHeader';
 
+
 export const Home = () =>{
 
     const [modalShow, setModalShow] = useState(false);
@@ -42,18 +43,15 @@ export const Home = () =>{
         addAlbum(albumName) 
     }
 
-    return(<>
+    return(
 
         <div className="container" >
-            <PageHeader><CustomForm data={data} setNewAlbums={setNewAlbums} /></PageHeader>
-            <p className=" mb-4 texts" >Kategórie</p>
-            {/* <div className="intro" >
-                <h2 style={{ marginRight: 'auto' }}>Fotogaléria</h2>
+            <PageHeader>
                 <CustomForm data={data} setNewAlbums={setNewAlbums} />
-            </div>
-            <p className=" mb-4 texts" >Kategórie</p> */}
+            </PageHeader>
+            <p className=" mb-4" >Kategórie</p>
         
-            <div className="row " style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, 232px)', gap: '30px', justifyContent: 'flex-start',margin:'0px' }}>      
+            <div className="row row-class" >      
             
                 <AlbumList newAlbums={newAlbums} onDeleteALbum={handleDeleteAlbum}/>
 
@@ -67,7 +65,7 @@ export const Home = () =>{
                 />
             </div>
         </div> 
-    </>)
+    )
 
 }
 

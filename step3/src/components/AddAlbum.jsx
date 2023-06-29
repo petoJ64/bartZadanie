@@ -4,6 +4,7 @@ import Xicon from '../images/xicon.svg';
 import Form from 'react-bootstrap/Form';
 import { useState, useEffect } from 'react';
 import unorm from 'unorm';
+import '../styles/addalbum.css';
 
 
 export const AddAlbum = ({show = false, onHide = () => {}, onAlbumAdded = () => {}}) => {
@@ -48,13 +49,13 @@ export const AddAlbum = ({show = false, onHide = () => {}, onAlbumAdded = () => 
           
               <Form>
                   <Form.Group className=" input-wrapper"> 
-                      <p style={{color:'red'}}>{errorMessage}</p> 
+                      <p className='error-color'>{errorMessage}</p> 
                       <div className="input-wrapper">
                       <label className='label-class' htmlFor='first'> Názov kategórie *</label>
-                      <input 
+                      <input
+                        className='input-class' 
                         id="categoryInput"
                         type="text" 
-                        style={{width:'100%', outline: 'none',paddingLeft:'12px'}}
                         onChange={(e)=>setCategoryName(e.target.value)}
                       />
                       </div>

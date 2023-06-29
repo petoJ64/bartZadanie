@@ -1,0 +1,14 @@
+.sorry-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    background: lightgray;
+    min-height: 240px;
+    padding: 0px 30px;
+  }
+  
+  .sorry-width {
+    max-width: 60px;
+  }

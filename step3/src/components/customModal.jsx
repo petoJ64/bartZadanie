@@ -8,8 +8,6 @@ function CustomModal({show = false, onHide = () => {}, onAlbumAdded = () => {},o
   const storedData = localStorage.getItem('categories');
   const albumsData = JSON.parse(storedData);
 
-  console.log("OTVARAM");
-  console.log("type", type);
   return (
     <>
       {type === 'addAlbum' && (

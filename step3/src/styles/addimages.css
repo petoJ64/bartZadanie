@@ -1,0 +1,25 @@
+.addImages {
+    border: 2px solid lightgrey;
+    min-height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-style: dotted;
+    border-radius: 6px;
+  }
+
+  .backg {
+    background: black;
+    border-radius: 0;
+    width: 100%;
+    border: 1px solid black;
+    margin-top: 10px;
+    border-radius: 8px;
+    color: white;
+  }
+
+  .wait-cursor {
+    cursor: wait;
+  }
+  

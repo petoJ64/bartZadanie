@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
 import {useState, useEffect} from "react";
 import notVisible from "../images/notVisible.svg";
+import '../styles/imagecomponent.css';
 
+// display image or loader
 export default function ImageComponent({src}) {
     const [imageLoaded, setImageLoaded] = useState(false);
     const [error, setError] = useState(false);
@@ -28,17 +30,22 @@ export default function ImageComponent({src}) {
               </div>
             )}
            {imageLoaded && !error && (
-        <img
-          className="img-fit rounded"
-          src={src}
-          alt=""
-          onError={(e) => {
-            setError(true);
-            console.log(e);
-          }}
-        />
-      )}
-      {error && <div style={{background:'lightgrey',display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',textAlign:'center',minHeight:'240px'}}><img src={notVisible} className="img-fit" style={{maxWidth:'60px'}}/><p style={{width:'80%'}}>Bohuzial obrazok nie je mozne zobrazit.</p></div>}
+            <img
+              className="img-fit rounded"
+              src={src}
+              alt=""
+              onError={(e) => {
+                setError(true);
+                console.log(e);
+              }}
+            />
+          )}
+          {error && 
+          <div className="sorry-image">
+            <img src={notVisible} className="img-fit sorry-width" />
+            <p >Bohužiaľ obrazok nie je možné zobraziť.</p>
+          </div>
+          }
         </>
     )
 }

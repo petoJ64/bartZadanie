@@ -1,0 +1,11 @@
+.center-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .loader-size {
+    width: 3rem;
+    height: 3rem;
+  }

@@ -4,6 +4,8 @@ import Xiconw from '../images/Xiconw.svg';
 import { useEffect, useState,useCallback } from 'react';
 import ImageComponent from './ImageComponent';
 import { ImageArrow } from './ImageArrow';
+import '../styles/displayimage.css'
+
 
 export const DisplayImage = ({show = false, onHide = () => {},albumsData = [], link = '' }) =>{
     const [activeChild, setActiveChild] = useState(0);
@@ -66,8 +68,8 @@ export const DisplayImage = ({show = false, onHide = () => {},albumsData = [], l
         aria-labelledby="contained-modal-title-vcenter"
         centered
         size='lg'
-        className="custom-modal"
-        style={{display:'flex',justifyContent:'center'}}
+        className="custom-modal modal"
+        
       >
         <Modal.Body className='p-0'>
           <div className="modal-content">
@@ -76,7 +78,12 @@ export const DisplayImage = ({show = false, onHide = () => {},albumsData = [], l
           <div className='top-right'>
             <img src={Xiconw} className='pointer arrow' alt="x" onClick={onHide} />
           </div>
-          <ImageArrow activeChild={activeChild} changeBlogPicBackwards={changeBlogPicBackwards} changeBlogPicForwards={changeBlogPicForwards} length={(albumsData).length}/>
+          <ImageArrow 
+            activeChild={activeChild} 
+            changeBlogPicBackwards={changeBlogPicBackwards} 
+            changeBlogPicForwards={changeBlogPicForwards} 
+            length={(albumsData).length}
+          />
         </Modal.Body>
       </Modal>
         </>

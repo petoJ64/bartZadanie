@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
 import Form  from 'react-bootstrap/Form';
 
+
 export const CustomForm = ({data,setNewAlbums = () => {}}) => {
 
     return (
         <div>
-            <h5  style={{  opacity:'0.6'}}>Vyhľadávanie</h5>
+            <h5  className='text-opacity'>Vyhľadávanie</h5>
             <Form>
                 <Form.Group >                  
                     <Form.Control 

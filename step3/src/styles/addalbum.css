@@ -1,0 +1,23 @@
+
+.input-wrapper {
+    position: relative;
+  }
+
+  .error-color{
+    color:red;
+  }
+
+  .label-class {
+    position: absolute;
+    font-size: 14px;
+    z-index: 1;
+    left: 1em;
+    background-color: white;
+    padding: 0 5px;
+  }
+
+  .input-class {
+    width: 100%;
+    outline: none;
+    padding-left:12px;
+  }

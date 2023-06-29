@@ -1,0 +1,23 @@
+.custom-modal .modal-content {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .top-right {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4rem;
+    width: 4rem;
+    top: 12px;
+    right: 12px;
+    color: white;
+    padding: 8px 8px;
+    border-radius: 50%;
+    font-size: smaller;
+    background: rgba(0, 0, 0, 0.5);
+  }

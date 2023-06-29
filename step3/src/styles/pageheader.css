@@ -1,0 +1,9 @@
+.page-header {
+    margin-right: auto;
+  }
+
+  .intro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

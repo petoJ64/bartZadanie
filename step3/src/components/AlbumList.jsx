@@ -2,6 +2,7 @@
 import { getAlbumData } from '../api/api';
 import { AlbumCard } from './AlbumCard';
 import { TrashComponent } from './TrashComponent';
+import '../styles/albumlist.css'
 
 
 function AlbumList({newAlbums, onDeleteALbum = () => {}}){
@@ -26,8 +27,8 @@ function AlbumList({newAlbums, onDeleteALbum = () => {}}){
     return (
         <>
         {  newAlbums && newAlbums.sort((a, b) => a.name.localeCompare(b.name)).map((category)=>     
-                <div key={category.name}  style={{width:'232px', height:'240px'}}>
-                        <div className="img-container center-loader rounded" style={{background:'#efe4b0'}}>
+                <div key={category.name}  className='card-size'>
+                        <div className="img-container center-loader rounded yellow-backg" >
                             <div >
                                 <TrashComponent onDeleteALbum={onDeleteALbum} name={category.name}/>
                                 <AlbumCard name={category.name} fullpath={category.image?.fullpath} />

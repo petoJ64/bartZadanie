@@ -1,0 +1,16 @@
+.imgBtn {
+    color: black;
+    background: white;
+    border: 2px solid black;
+    border-radius: 4px;
+  }
+  .imgBtn:hover {
+    color: white;
+    background: black;
+    transition: 1s;
+    cursor: pointer;
+  }
+
+  .selected-files {
+    color: green;
+  }

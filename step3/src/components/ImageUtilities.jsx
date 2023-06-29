@@ -1,5 +1,6 @@
 import Resizer from 'react-image-file-resizer';
 
+// resize image before upload
 export async function imageUtilities(files, setImagesReady = () =>{}){
     let uploadedImages = [];
   
